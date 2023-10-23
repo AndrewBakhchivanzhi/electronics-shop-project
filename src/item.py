@@ -16,6 +16,12 @@ class Item:
         self.quantity = quantity  # Количество товара в магазине
         Item.all.append(self)  # Хранение экземпляров класса
 
+    def __repr__(self):
+        return f"Item('{self._name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return self._name
+
     @property
     def name(self):
         return self._name
