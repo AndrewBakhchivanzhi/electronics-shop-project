@@ -17,10 +17,15 @@ class Item:
         Item.all.append(self)  # Хранение экземпляров класса
 
     def __repr__(self):
-        return f"Item('{self._name}', {self.price}, {self.quantity})"
+        return f"{__class__.__name__}('{self._name}', {self.price}, {self.quantity})"
 
     def __str__(self):
         return self._name
+
+    def __add__(self, other):
+        if not isinstance(other,Item):
+            raise ValueError("Складывать можно только экземпляры класса Item")
+        return int(self.quantity) + int(other.quantity)
 
     @property
     def name(self):
